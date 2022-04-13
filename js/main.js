@@ -1,3 +1,5 @@
+import {localAbstracts} from "../js/papers.js";
+
 var abstract1 = "We analysed primary breast cancers by genomic DNA copy number arrays, DNA methylation, exome sequencing, messenger RNA arrays, microRNA sequencing and reverse-phase protein arrays. Our ability to integrate information across platforms provided key insights into previously defined gene expression subtypes and demonstrated the existence of four main breast cancer classes when combining data from five platforms, each of which shows significant molecular heterogeneity. Somatic mutations in only three genes (TP53, PIK3CA and GATA3) occurred at > 10% incidence across all breast cancers; however, there were numerous subtype-associated and novel gene mutations including the enrichment of specific mutations in GATA3, PIK3CA and MAP3K1 with the luminal A subtype. We identified two novel protein-expression-defined subgroups, possibly produced by stromal/microenvironmental elements, and integrated analyses identified specific signalling pathways dominant in each molecular subtype including a HER2/phosphorylated HER2/EGFR/phosphorylated EGFR signature within the HER2-enriched expression subtype. Comparison of basal-like breast tumours with high-grade serous ovarian tumours showed many molecular commonalities, indicating a related aetiology and similar therapeutic opportunities. The biological finding of the four main breast cancer subtypes caused by different subsets of genetic and epigenetic abnormalities raises the hypothesis that much of the clinically observable plasticity and heterogeneity occurs within, and not across, these major biological subtypes of breast cancer."
 
 var abstract2 = "We pooled data from more than 10,000 cases of invasive breast cancer from 12 studies that had collected information on hormone receptor status, human epidermal growth factor receptor-2 (HER2) status, and at least one basal marker (cytokeratin [CK]5/6 or epidermal growth factor receptor [EGFR]) together with survival time data. Tumours were classified as luminal and nonluminal tumours according to hormone receptor expression. These two groups were further subdivided according to expression of HER2, and finally, the luminal and nonluminal HER2-negative tumours were categorised according to expression of basal markers. Changes in mortality rates over time differed by subtype. In women with luminal HER2-negative subtypes, mortality rates were constant over time, whereas mortality rates associated with the luminal HER2-positive and nonluminal subtypes tended to peak within 5 y of diagnosis and then decline over time. In the first 5 y after diagnosis the nonluminal tumours were associated with a poorer prognosis, but over longer follow-up times the prognosis was poorer in the luminal subtypes, with the worst prognosis at 15 y being in the luminal HER2-positive tumours. Basal marker expression distinguished the HER2-negative luminal and nonluminal tumours into different subtypes. These patterns were independent of any systemic adjuvant therapy."
@@ -46,7 +48,7 @@ var abstract23 = "Triple-negative breast cancer (TNBC) heterogeneity represents 
 
 var abstract24 = "Mammography and ultrasound are the gold standard imaging techniques for preoperative assessment and for monitoring the efficacy of neoadjuvant chemotherapy in breast cancer. Maximum accuracy in predicting pathological tumor size non-invasively is critical for individualized therapy and surgical planning. We therefore aimed to assess the accuracy of tumor size measurement by ultrasound and mammography in a multicentered health services research study. We retrospectively analyzed data from 6543 patients with unifocal, unilateral primary breast cancer. The maximum tumor diameter was measured by ultrasound and/or mammographic imaging. All measurements were compared to final tumor diameter determined by postoperative histopathological examination. We compared the precision of each imaging method across different patient subgroups as well as the method-specific accuracy in each patient subgroup. Overall, the correlation with histology was 0.61 for mammography and 0.60 for ultrasound. Both correlations were higher in pT2 cancers than in pT1 and pT3. Ultrasound as well as mammography revealed a significantly higher correlation with histology in invasive ductal compared to lobular cancers (p < 0.01). For invasive lobular cancers, the mammography showed better correlation with histology than ultrasound (p = 0.01), whereas there was no such advantage for invasive ductal cancers. Ultrasound was significantly superior for HR negative cancers (p < 0.001). HER2/neu positive cancers were also more precisely assessed by ultrasound (p < 0.001). The size of HER2/neu negative cancers could be more accurately predicted by mammography (p < 0.001). This multicentered health services research approach demonstrates that predicting tumor size by mammography and ultrasound provides accurate results. Biological tumor features do, however, affect the diagnostic precision."
 
-var abstract25 = "Breast cancer is heterogeneous in prognoses and drug responses. To organize breast cancers by gene expression independent of statistical methodology, we identified the Breast Cancer Consensus Subtypes (BCCS) as the consensus groupings of six different subtyping methods. Our classification software identified seven BCCS subtypes in a study cohort of publicly available data (n = 5950) including METABRIC, TCGA-BRCA, and data assayed by Affymetrix arrays. All samples were fresh-frozen from primary tumors. The estrogen receptor-positive (ER+) BCCS subtypes were: PCS1 (18%) good prognosis, stromal infiltration; PCS2 (15%) poor prognosis, highly proliferative; PCS3 (13%) poor prognosis, highly proliferative, activated IFN-gamma signaling, cytotoxic lymphocyte infiltration, high tumor mutation burden; PCS4 (18%) good prognosis, hormone response genes highly expressed. The ER− BCCS subtypes were: NCS1 (11%) basal; NCS2 (10%) elevated androgen response; NCS3 (5%) cytotoxic lymphocyte infiltration; unclassified tumors (9%). HER2+ tumors were heterogeneous with respect to BCCS."
+var abstract25 = "Breast cancer is heterogeneous in prognoses and drug responses. To organize breast cancers by gene expression independent of statistical methodology, we identified the Breast Cancer Consensus Subtypes (BCCS) as the consensus groupings of six different subtyping methods. Our classification software identified seven BCCS subtypes in a study cohort of publicly available data (n = 5950) including METABRIC, TCGA-BRCA, and data assayed by Affymetrix arrays. All samples were fresh-frozen from primary tumors. The estrogen receptor-positive (ER+) BCCS subtypes were: PCS1 (18%) good prognosis, stromal infiltration; PCS2 (15%) poor prognosis, highly proliferative; PCS3 (13%) poor prognosis, highly proliferative, activated IFN-gamma signaling, cytotoxic lymphocyte infiltration, high tumor mutation burden; PCS4 (18%) good prognosis, hormone response genes highly expressed. The ER- BCCS subtypes were: NCS1 (11%) basal; NCS2 (10%) elevated androgen response; NCS3 (5%) cytotoxic lymphocyte infiltration; unclassified tumors (9%). HER2+ tumors were heterogeneous with respect to BCCS."
 
 var abstracts = [abstract1, abstract2, abstract3, abstract4, abstract5, abstract6, abstract7, abstract8, abstract9, abstract10, abstract11, abstract12, abstract13, abstract14, abstract15, abstract16, abstract17, abstract18, abstract19, abstract20, abstract21, abstract22, abstract23, abstract24, abstract25]
 
@@ -129,7 +131,7 @@ function prepareJSONData(){
 	$(".JSONdelete").html("");
 	var JSONOutContents = $("#JSON-out").text();
 	JSONOutContents = JSONOutContents.substring(0, JSONOutContents.length - 1);
-	var annotationSentence = document.getElementById("raw-data-div").innerHTML
+	var annotationSentence = document.getElementById("annotation-text").innerHTML
 	var JSONData = "(\""+annotationSentence+"\",{\"entities\":["+JSONOutContents+"]}),";
 	return(JSONData);
 }
@@ -171,22 +173,60 @@ function initiateEntities(){
   }
 }
 
+function httpGet(theUrl) {
+  let xmlHttpReq = new XMLHttpRequest();
+  xmlHttpReq.open("GET", theUrl, false);
+  xmlHttpReq.send(null);
+  return xmlHttpReq.response;
+}
+
+function pasteRawData(pastedData){
+  var rawDataArray = pastedData.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+  var numberOfSamples = rawDataArray.length;
+  localStorage.setItem("spacy-annotation-sample-count",numberOfSamples);
+  var preparedRawData = "";
+  rawDataArray.forEach(function(rawData){
+    preparedRawData += "<div class = 'raw-data-row'>"+rawData.replace(/[^\x00-\x7F]/g, "").replace(/\"/g,"")+"</div>"
+  });
+  localStorage.setItem("spacy-annotation-raw-data",preparedRawData);
+  $("#raw-data-div").html(localStorage.getItem("spacy-annotation-raw-data"));
+  //$("#annotation-text").html($(".raw-data-row:first-child").html());
+  RefreshData();
+}
+
+function paramHandler(urlParams){
+  if (urlParams.has('paper')){
+    var paperId = parseInt(urlParams.get('paper'));
+    var txt = abstracts[paperId-1];
+    pasteRawData(txt);
+  } else if (urlParams.has('pubmedID')){
+    var id = urlParams.get('pubmedID');
+    var url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=' + id + '&retmode=text&rettype=xml';
+    //var url = 'https://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:' + id + '&metadataPrefix=pmc_fm'
+    console.log(url);
+    var meta = $(httpGet(url));
+    var txt = meta.find('AbstractText').text();
+    pasteRawData(txt);
+    //pasteRawData()
+  }
+
+}
+
 $(document).ready(function(){
+
 	RefreshData();
   clearEntities();
   initiateEntities();
+  console.log(localAbstracts)
   document.getElementById("raw-data-div").innerHTML = ""
   document.getElementById("completed-data-div").innerHTML = ""
   document.getElementById("download-annotations").removeAttribute("href");
   document.getElementById("download-annotations").removeAttribute("download");
-  var queryString = window.location.search;
+  var queryString = window.location.href.split('?')[1];
+  console.log(queryString)
   var urlParams = new URLSearchParams(queryString);
-  if (urlParams.has('paper')){
-    var paperId = parseInt(urlParams.get('paper'));
-    var txt = abstracts[paperId-1]
-    document.getElementById("raw-data-div").innerHTML = txt;
-    document.getElementById("annotation-text").innerHTML = txt;
-  }
+  console.log(urlParams.get('pubmedID'))
+  paramHandler(urlParams)
 
 	$("#add-entity-button").on("click",function(){
 		var entityNameValue = $("#add-entity-value").val();
