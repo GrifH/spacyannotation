@@ -50,8 +50,8 @@ var abstract24 = "Mammography and ultrasound are the gold standard imaging techn
 
 var abstract25 = "Breast cancer is heterogeneous in prognoses and drug responses. To organize breast cancers by gene expression independent of statistical methodology, we identified the Breast Cancer Consensus Subtypes (BCCS) as the consensus groupings of six different subtyping methods. Our classification software identified seven BCCS subtypes in a study cohort of publicly available data (n = 5950) including METABRIC, TCGA-BRCA, and data assayed by Affymetrix arrays. All samples were fresh-frozen from primary tumors. The estrogen receptor-positive (ER+) BCCS subtypes were: PCS1 (18%) good prognosis, stromal infiltration; PCS2 (15%) poor prognosis, highly proliferative; PCS3 (13%) poor prognosis, highly proliferative, activated IFN-gamma signaling, cytotoxic lymphocyte infiltration, high tumor mutation burden; PCS4 (18%) good prognosis, hormone response genes highly expressed. The ER- BCCS subtypes were: NCS1 (11%) basal; NCS2 (10%) elevated androgen response; NCS3 (5%) cytotoxic lymphocyte infiltration; unclassified tumors (9%). HER2+ tumors were heterogeneous with respect to BCCS."
 
-var abstracts = [abstract1, abstract2, abstract3, abstract4, abstract5, abstract6, abstract7, abstract8, abstract9, abstract10, abstract11, abstract12, abstract13, abstract14, abstract15, abstract16, abstract17, abstract18, abstract19, abstract20, abstract21, abstract22, abstract23, abstract24, abstract25]
-
+//var abstracts = [abstract1, abstract2, abstract3, abstract4, abstract5, abstract6, abstract7, abstract8, abstract9, abstract10, abstract11, abstract12, abstract13, abstract14, abstract15, abstract16, abstract17, abstract18, abstract19, abstract20, abstract21, abstract22, abstract23, abstract24, abstract25]
+var abstracts = localAbstracts
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -166,8 +166,8 @@ function clearEntities(){
 }
 
 function initiateEntities(){
-  // var entities = ["Gene", "Disease", "Chemical", "Species", "Mutation", "Cell Line", "Cell Type", "DNA", "RNA"]
-  var entities = ['Disease', 'Subtype', 'Gene', 'Organ', 'Gene Product/Protein']
+  var entities = ["Gene", "Disease", "Subtype", "Organ", "Gene Product", "Chemical", "Species", "Mutation", "Cell Line", "Cell Type", "DNA", "RNA"]
+  //var entities = ['Disease', 'Subtype', 'Gene', 'Organ', 'Gene Product/Protein']
   for (let i = 0; i < entities.length; i++) {
     addEntity(entities[i])
   }
@@ -219,6 +219,7 @@ $(document).ready(function(){
   initiateEntities();
   console.log(localAbstracts)
   document.getElementById("raw-data-div").innerHTML = ""
+  document.getElementById("annotation-text").innerHTML = ""
   document.getElementById("completed-data-div").innerHTML = ""
   document.getElementById("download-annotations").removeAttribute("href");
   document.getElementById("download-annotations").removeAttribute("download");
@@ -238,12 +239,12 @@ $(document).ready(function(){
 		var entityText = window.getSelection().toString();
 		var entityTextLength = entityText.length;
 		var entityType = this.innerHTML;
-		sel = window.getSelection();
+		var sel = window.getSelection();
 		if (sel.rangeCount) {
-			range = sel.getRangeAt(0);
+			var range = sel.getRangeAt(0);
 			var entityID = Math.round(Math.random()*1000000000000).toString();
-			caretPos = getCaretCharacterOffsetWithin(document.getElementById("annotation-text"));
-			nodeText = "<div id='ner-div' data-entity-id-marked = '"+entityID+"' style='background-color:"+this.style.backgroundColor+"'>"+entityText+"</div>";
+			var caretPos = getCaretCharacterOffsetWithin(document.getElementById("annotation-text"));
+			var nodeText = "<div id='ner-div' data-entity-id-marked = '"+entityID+"' style='background-color:"+this.style.backgroundColor+"'>"+entityText+"</div>";
 			document.execCommand("insertHTML",false,nodeText);
 		}
 		var entityStartPosition = caretPos - entityTextLength;
@@ -261,10 +262,10 @@ $(document).ready(function(){
 		var pastedData = e.originalEvent.clipboardData.getData('text');
 		e.preventDefault();
 		//alert(pastedData);
-		rawDataArray = pastedData.split("\n");
+		var rawDataArray = pastedData.split("\n");
 		var numberOfSamples = rawDataArray.length;
 		localStorage.setItem("spacy-annotation-sample-count",numberOfSamples);
-		preparedRawData = "";
+		var preparedRawData = "";
 		rawDataArray.forEach(function(rawData){
 			preparedRawData += "<div class = 'raw-data-row'>"+rawData.replace(/[^\x00-\x7F]/g, "").replace(/\"/g,"")+"</div>"
 		});
@@ -290,6 +291,7 @@ $(document).ready(function(){
 	});
 	$("#clear-raw").on("click",function(){
 		localStorage.setItem("spacy-annotation-raw-data","");
+    document.getElementById("annotation-text").innerHTML = ""
 		RefreshData();
 	});
 	$("#clear-completed").on("click",function(){
