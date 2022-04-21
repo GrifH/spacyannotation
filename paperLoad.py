@@ -12,7 +12,7 @@ def main():
             file.close()
     else:
         print("Read from directory")
-        directory = "./thesisPapers"
+        directory = "./papers"
         for filename in os.listdir(directory):
             f = os.path.join(directory, filename)
     # checking if it is a file
