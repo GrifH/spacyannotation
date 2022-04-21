@@ -24,7 +24,7 @@ You can copy/paste text into the raw data input box (bottom left). Seperate sent
 
 ## Usage
 
-Using the above options, load raw data into the bottom left text box. The top left box will be populated with the first line of raw text. Select a word or phrase you'd like to label, and then click the appropriate label. This will add the annotation to the top right text box. When the line is completely annotated, hit the "Mark as Completed". THis will format the annotations and append them to the bottom right text box, and a new sentance will be loaded into the top left to begin annotating.
+Using the above options, load raw data into the bottom left text box. The top left box will be populated with the first line of raw text. Select a word or phrase you'd like to label, and then click the appropriate label. This will add the annotation to the top right text box. When the line is completely annotated, hit the "Mark as Completed". This will format the annotations and append them to the bottom right text box, and a new sentence will be loaded into the top left to begin annotating.
 
 ## Saving
 
