@@ -166,7 +166,7 @@ function clearEntities(){
 }
 
 function initiateEntities(){
-  var entities = ["Gene", "Disease", "Subtype", "Organ", "Gene Product", "Chemical", "Species", "Mutation", "Cell Line", "Cell Type", "DNA", "RNA"]
+  var entities = ["Gene", "Disease", "Chemical", "Species", "Mutation", "Cell Line", "Cell Type", "DNA", "RNA"]
   //var entities = ['Disease', 'Subtype', 'Gene', 'Organ', 'Gene Product/Protein']
   for (let i = 0; i < entities.length; i++) {
     addEntity(entities[i])
